@@ -1,5 +1,5 @@
 gui -> ATM -> Driver -> Simulated Drivers
-	|		|
-	|		------> Physical Drivers
+	|	|
+	|	------> Physical Drivers
 	|
-	----> Transaction -> Banking 
+	----> Transaction -> Banking
