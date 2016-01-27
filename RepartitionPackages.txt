@@ -1,0 +1,44 @@
+gordon
+	ATMMain
+
+GUI
+	CustomerConsole
+	OperatorPanel
+	BillsPanel
+	SimCardPanel
+	LogPanel
+	SimDisplay
+	SimOperatorPanel
+
+ATM
+	ATM
+	Session
+
+Transactions
+	Deposit
+	Inquiry
+	ITransaction
+	Transfer
+	Withdrawal
+	
+Drivers
+	CardReader
+	CashDispenser
+	EnvelopeAcceptor
+	Log
+	ReceiptPrinter
+	SimCardReader
+	SimCashDispenser
+	SimEnvelopeAcceptor
+	SimKeyboard
+	SimReceiptPrinter
+
+Banking
+	AccountInformation
+	Balances
+	Card
+	Messages
+	Money
+	Receipt
+	Status
+	SimulatedBank
