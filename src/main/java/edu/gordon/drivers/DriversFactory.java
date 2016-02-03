@@ -5,4 +5,5 @@ public interface DriversFactory {
 	public ILog createLog();
 	public ICashDispenser createCashDispenser(ILog log);
 	public ICustomerConsole createCustomerConsole();
+	public IOperatorPanel createOperatorPanel();
 }

@@ -5,6 +5,7 @@ import edu.gordon.drivers.ICardReader;
 import edu.gordon.drivers.ICashDispenser;
 import edu.gordon.drivers.ICustomerConsole;
 import edu.gordon.drivers.ILog;
+import edu.gordon.drivers.IOperatorPanel;
 
 public class SimDriversFactory implements DriversFactory {
 
@@ -26,6 +27,10 @@ public class SimDriversFactory implements DriversFactory {
 	
 	public ICustomerConsole createCustomerConsole() {
 		return new CustomerConsole();
+	}
+
+	public IOperatorPanel createOperatorPanel() {
+		return new OperatorPanel();
 	}
 
 }
