@@ -3,6 +3,7 @@ package edu.gordon.simulation.drivers;
 import edu.gordon.drivers.DriversFactory;
 import edu.gordon.drivers.ICardReader;
 import edu.gordon.drivers.ICashDispenser;
+import edu.gordon.drivers.ICustomerConsole;
 import edu.gordon.drivers.ILog;
 
 public class SimDriversFactory implements DriversFactory {
@@ -21,6 +22,10 @@ public class SimDriversFactory implements DriversFactory {
 
 	public ICashDispenser createCashDispenser(ILog log) {
 		return new CashDispenser(log);
+	}
+	
+	public ICustomerConsole createCustomerConsole() {
+		return new CustomerConsole();
 	}
 
 }
