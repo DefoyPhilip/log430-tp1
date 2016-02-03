@@ -1,5 +1,7 @@
 package edu.gordon.drivers;
 
+import edu.gordon.banking.Money;
+
 public interface IOperatorPanel {
-	public long getInitialCash();
+	public Money getInitialCash();
 }

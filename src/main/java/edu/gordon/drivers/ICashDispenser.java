@@ -1,7 +1,9 @@
 package edu.gordon.drivers;
 
+import edu.gordon.banking.Money;
+
 public interface ICashDispenser {
-	public void setInitialCash(long initialCash);
-	public boolean checkCashOnHand(long amount);
-	public void dispenseCash(long amount);
+	public void setInitialCash(Money initialCash);
+	public boolean checkCashOnHand(Money amount);
+	public void dispenseCash(Money amount);
 }
