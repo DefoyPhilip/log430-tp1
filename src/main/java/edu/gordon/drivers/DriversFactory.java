@@ -10,5 +10,5 @@ public interface DriversFactory {
 	public IOperatorPanel createOperatorPanel();
 	public IReceiptPrinter createReceiptPrinter();
 	public IEnvelopeAcceptor createEnvelopeAcceptor(ILog log);
-	public INetworkToBank createINetworkToBank(ILog log, InetAddress bankAddress);
+	public INetworkToBank createINetworkToBank(ILog log);
 }

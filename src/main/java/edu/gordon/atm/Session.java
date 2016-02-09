@@ -207,7 +207,7 @@ import edu.gordon.drivers.Cancelled;/** Representation for one ATM session ser
     		atm.getCashDispenser().dispenseCash(transaction.getAmount());
     	}
     	
-    	return new Receipt(atm, transaction.getCard(), transaction, transaction.getBalances()) {
+    	return new Receipt(atm.getBankName(), atm.getID(), atm.getPlace(), transaction.getCard(), transaction, transaction.getBalances()) {
             {
                 detailsPortion = transaction.getReceiptDetails();
             }
