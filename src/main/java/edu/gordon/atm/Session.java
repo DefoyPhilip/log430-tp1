@@ -21,7 +21,9 @@ import edu.gordon.drivers.Cancelled;/** Representation for one ATM session ser
                     catch(CardRetained e)
                     {
                         state = FINAL_STATE;
-                    }                                    case EJECTING_CARD_STATE:                                    atm.getCardReader().ejectCard();                    state = FINAL_STATE;                    break;            }        }    }
+                    }
+                	
+                	break;                                    case EJECTING_CARD_STATE:                                    atm.getCardReader().ejectCard();                    state = FINAL_STATE;                    break;            }        }    }
     
     private boolean performTransaction(Transaction transaction) throws CardRetained
     {
