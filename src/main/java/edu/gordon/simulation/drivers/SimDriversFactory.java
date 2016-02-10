@@ -42,8 +42,8 @@ public class SimDriversFactory implements DriversFactory {
 		return new ReceiptPrinter();
 	}
 
-	public INetworkToBank createINetworkToBank(ILog log, InetAddress bankAddress) {
-		return new NetworkToBank((Log) log, bankAddress);
+	public INetworkToBank createINetworkToBank(ILog log) {
+		return new NetworkToBank((Log) log);
 	}
 
 	public IEnvelopeAcceptor createEnvelopeAcceptor(ILog log) {
