@@ -1,7 +1,5 @@
 package edu.gordon.simulation.drivers;
 
-import java.net.InetAddress;
-
 import edu.gordon.drivers.DriversFactory;
 import edu.gordon.drivers.ICardReader;
 import edu.gordon.drivers.ICashDispenser;
