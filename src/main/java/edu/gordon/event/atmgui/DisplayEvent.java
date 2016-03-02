@@ -11,8 +11,8 @@ public class DisplayEvent extends EventObject {
 
 	public DisplayEvent(Object source, String type) {
 		super(source);
-		if (type != DISPLAY_TEXT_EVENT || type != ECHO_TEXT_EVENT || type != CLEAR_TEXT_EVENT) {
-			System.out.println("Bad event type");
+		if (!type.equals(DISPLAY_TEXT_EVENT) && !type.equals(ECHO_TEXT_EVENT) && !type.equals(CLEAR_TEXT_EVENT)) {
+			System.out.println("Bad event type: " + type);
 		}
 		this.type = type;
 	}
