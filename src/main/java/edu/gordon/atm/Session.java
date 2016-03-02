@@ -5,7 +5,8 @@ import edu.gordon.banking.Card;import edu.gordon.banking.Message;
 import edu.gordon.banking.Money;
 import edu.gordon.banking.Receipt;
 import edu.gordon.banking.Status;
-import edu.gordon.drivers.Cancelled;/** Representation for one ATM session serving a single customer. */public class Session{    /** Constructor     *     *  @param edu.gordon.atm the ATM on which the session is performed     */    public Session(ATM atm)    {        this.atm = atm;                state = READING_CARD_STATE;    }    /** Perform the Session Use Case     */    public void performSession()    {        Card card = null;        Transaction currentTransaction = null;                while (state != FINAL_STATE)        {            switch(state)            {                case READING_CARD_STATE:                    card = atm.getCardReader().readCard();                                        if (card.getNumber() != -1)                        state = READING_PIN_STATE;                    else                    {                        atm.getCustomerConsole().display("Unable to read card");                        state = EJECTING_CARD_STATE;                    }                    break;                                    case READING_PIN_STATE:                                    try                    {                        pin = atm.getCustomerConsole().readPIN(                            "Please enter your PIN\n" +                            "Then press ENTER");                        state = CHOOSING_TRANSACTION_STATE;                    }                    catch(Cancelled e)                    {                        state = EJECTING_CARD_STATE;                    }                    break;                                case CHOOSING_TRANSACTION_STATE:                                    try                    {                    	int choice = atm.getCustomerConsole().readMenuChoice(
+import edu.gordon.drivers.Cancelled;/** Representation for one ATM session serving a single customer. */public class Session{    /** Constructor     *     *  @param edu.gordon.atm the ATM on which the session is performed     */    public Session(ATM atm)    {        this.atm = atm;                state = READING_CARD_STATE;    }    /** Perform the Session Use Case     */    public void performSession()    {        Card card = null;        Transaction currentTransaction = null;                while (state != FINAL_STATE)        {            switch(state)            {                case READING_CARD_STATE:                    card = atm.getCardReader().readCard();                                        if (card.getNumber() != -1)                        state = READING_PIN_STATE;                    else                    {
+                    	atm.clearDisplay();                        atm.display("Unable to read card");                        state = EJECTING_CARD_STATE;                    }                    break;                                    case READING_PIN_STATE:                                    try                    {                        pin = atm.getCustomerConsole().readPIN(                            "Please enter your PIN\n" +                            "Then press ENTER");                        state = CHOOSING_TRANSACTION_STATE;                    }                    catch(Cancelled e)                    {                        state = EJECTING_CARD_STATE;                    }                    break;                                case CHOOSING_TRANSACTION_STATE:                                    try                    {                    	int choice = atm.getCustomerConsole().readMenuChoice(
                                 "Please choose transaction type", TRANSACTION_TYPES_MENU);
                         currentTransaction = 
                             Transaction.makeTransaction(choice, card, pin);
@@ -41,7 +42,8 @@ import edu.gordon.drivers.Cancelled;/** Representation for one ATM session ser
                     try
                     {           
                         message = getSpecificsFromCustomer(transaction);
-                        atm.getCustomerConsole().display("");
+                        atm.clearDisplay();
+                        atm.display("");
                         state = SENDING_TO_BANK_STATE;
                     }
                     catch(Cancelled e)
@@ -232,7 +234,8 @@ import edu.gordon.drivers.Cancelled;/** Representation for one ATM session ser
            pin = atm.getCustomerConsole().readPIN(
                "PIN was incorrect\nPlease re-enter your PIN\n" +
                "Then press ENTER");
-           atm.getCustomerConsole().display("");
+           atm.clearDisplay();
+           atm.display("");
            
            message.setPIN(pin);
            status = atm.getNetworkToBank().sendMessage(message, balances);
@@ -244,7 +247,8 @@ import edu.gordon.drivers.Cancelled;/** Representation for one ATM session ser
        }
        
        atm.getCardReader().retainCard();
-       atm.getCustomerConsole().display(
+       atm.clearDisplay();
+       atm.display(
            "Your card has been retained\nPlease contact the bank.");
        try
        {
@@ -252,7 +256,8 @@ import edu.gordon.drivers.Cancelled;/** Representation for one ATM session ser
        }
        catch(InterruptedException e)
        { }
-       atm.getCustomerConsole().display("");
+       atm.clearDisplay();
+       atm.display("");
                
        throw new CardRetained();
    }
