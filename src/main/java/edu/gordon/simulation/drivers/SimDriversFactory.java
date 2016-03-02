@@ -15,7 +15,6 @@ public class SimDriversFactory implements DriversFactory {
 	private EventBus driversAtmBus;
 
 	public SimDriversFactory(EventBus driversAtmBus) {
-		// TODO Auto-generated constructor stub
 		this.driversAtmBus = driversAtmBus;
 	}
 
