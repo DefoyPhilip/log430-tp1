@@ -5,6 +5,7 @@ import com.google.common.eventbus.Subscribe;
 public class CardInsertedHandler {
 	@Subscribe
 	public void handle(CardInsertedEvent e){
-		//Faire les opérations lancées par l'atm
+		//Appeler la fonction de l'atm
+
 	}
 }
