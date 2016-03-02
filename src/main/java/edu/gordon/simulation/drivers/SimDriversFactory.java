@@ -1,5 +1,6 @@
 package edu.gordon.simulation.drivers;
 
+import com.google.common.eventbus.EventBus;
 import edu.gordon.drivers.DriversFactory;
 import edu.gordon.drivers.ICardReader;
 import edu.gordon.drivers.ICashDispenser;
@@ -11,13 +12,15 @@ import edu.gordon.drivers.IOperatorPanel;
 import edu.gordon.drivers.IReceiptPrinter;
 
 public class SimDriversFactory implements DriversFactory {
+	private EventBus driversAtmBus;
 
-	public SimDriversFactory() {
+	public SimDriversFactory(EventBus driversAtmBus) {
 		// TODO Auto-generated constructor stub
+		this.driversAtmBus = driversAtmBus;
 	}
 
 	public ICardReader createCardReader() {
-		return new CardReader();
+		return new CardReader(driversAtmBus);
 	}
 
 	public ILog createLog() {
